@@ -12,13 +12,13 @@ export default function UpdatePassword() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Проверяем токен доступа в URL
+
         const accessToken = searchParams.get('access_token');
         const refreshToken = searchParams.get('refresh_token');
         const tokenType = searchParams.get('token_type');
 
         if (accessToken && refreshToken && tokenType) {
-            // Устанавливаем сессию из URL
+
             supabase.auth.setSession({
                 access_token: accessToken,
                 refresh_token: refreshToken,

@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
-import { useNavigate } from 'react-router-dom';
 import { Box, TextField, Button, Typography, Link, Alert, Paper } from '@mui/material';
 
 export default function ForgotPassword() {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState({ type: '', text: '' });
-    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -14,7 +12,7 @@ export default function ForgotPassword() {
 
         try {
             const { error } = await supabase.auth.resetPasswordForEmail(email, {
-                redirectTo: 'http://localhost:3000/update-password', // Замените на ваш URL
+                redirectTo: 'https://nati-app.vercel.app/update-password'
             });
 
             if (error) throw error;
