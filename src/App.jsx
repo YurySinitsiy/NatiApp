@@ -5,8 +5,6 @@ import Registration from "./pages/Registration";
 import ForgotPassword from "./pages/ForgotPassword";
 import UpdatePassword from "./pages/UpdatePassword";
 import Users from "./pages/Users";
-import ProtectedRoute from "./components/ProtectedRoute";
-import AuthLayout from "./components/AuthLayout"; 
 
 const theme = createTheme({
   palette: {
@@ -20,19 +18,12 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-
-          <Route element={<AuthLayout />}>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Registration />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/update-password" element={<UpdatePassword />} />
-          </Route>
-
-          <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<Users />} />
-            <Route path="/main" element={<Users />} />
-          </Route>
-
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Registration />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/update-password" element={<UpdatePassword />} />
+          <Route path="/" element={<Users />} />
+          <Route path="/main" element={<Users />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
